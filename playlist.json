@@ -1,0 +1,12 @@
+{
+  "rock": [
+    {"name": "Song Rock 1", "url": "https://example.com/rock1.mp3"},
+    {"name": "Song Rock 2", "url": "https://example.com/rock2.mp3"}
+  ],
+  "blues": [
+    {"name": "Song Blues 1", "url": "https://example.com/blues1.mp3"}
+  ],
+  "nacional": [
+    {"name": "Song Nacional 1", "url": "https://example.com/nacional1.mp3"}
+  ]
+}

@@ -1,0 +1,853 @@
+/* ==========================================================================
+   COBRA MOTORADIO - DESIGN SYSTEM & BRAND STYLE
+   ========================================================================== */
+
+:root {
+    /* Color Palette - Premium HSL Colors */
+    --color-bg-deep: hsl(220, 20%, 7%);
+    --color-bg-card: hsla(220, 16%, 12%, 0.75);
+    --color-border: hsla(220, 15%, 25%, 0.4);
+    
+    --color-green-neon: hsl(145, 80%, 48%);
+    --color-green-neon-glow: hsla(145, 80%, 48%, 0.35);
+    --color-green-dark: hsl(145, 80%, 20%);
+    
+    --color-gold: hsl(45, 85%, 52%);
+    --color-gold-glow: hsla(45, 85%, 52%, 0.3);
+    
+    --color-text-main: hsl(0, 0%, 96%);
+    --color-text-sub: hsl(220, 10%, 70%);
+    --color-text-muted: hsl(220, 8%, 45%);
+    --color-live-red: hsl(0, 85%, 55%);
+    
+    /* Layout & FX */
+    --border-radius-lg: 24px;
+    --border-radius-md: 16px;
+    --border-radius-sm: 8px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glass-blur: blur(16px);
+}
+
+/* Base Settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+/* Background Ambient Lights */
+.bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    z-index: -1;
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.bg-glow-green {
+    width: 400px;
+    height: 400px;
+    background-color: var(--color-green-neon);
+    top: 10%;
+    left: -100px;
+}
+
+.bg-glow-gold {
+    width: 450px;
+    height: 450px;
+    background-color: var(--color-gold);
+    bottom: 5%;
+    right: -150px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS
+   ========================================================================== */
+
+.app-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Glassmorphic Panel Base */
+.glass-panel {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    transition: var(--transition-smooth);
+}
+
+.glass-panel:hover {
+    border-color: rgba(145, 235, 172, 0.2);
+}
+
+/* ==========================================================================
+   HEADER COMPONENT
+   ========================================================================== */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(18, 22, 28, 0.4);
+    border-radius: var(--border-radius-md);
+    padding: 15px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.brand-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 2px solid var(--color-green-neon);
+    box-shadow: 0 0 12px var(--color-green-neon-glow);
+    object-fit: cover;
+}
+
+.brand-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--color-text-main) 30%, var(--color-green-neon) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.brand-subtitle {
+    font-size: 0.85rem;
+    color: var(--color-text-sub);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.gold-text {
+    color: var(--color-gold);
+}
+
+.green-text {
+    color: var(--color-green-neon);
+}
+
+/* Live Badge */
+.live-indicator-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    padding: 6px 14px;
+}
+
+.live-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-text-muted);
+    border-radius: 50%;
+    transition: var(--transition-smooth);
+}
+
+.live-dot.active {
+    background-color: var(--color-live-red);
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    animation: pulse-live 1.5s infinite;
+}
+
+.live-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-text-sub);
+}
+
+.live-dot.active + .live-text {
+    color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   GRID & CARD COMPONENTS
+   ========================================================================== */
+
+.radio-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 20px;
+}
+
+/* ==========================================================================
+   LEFT PANEL: THE MAIN PLAYER
+   ========================================================================== */
+
+.player-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: center;
+}
+
+/* Album/Vinyl Disc Artwork */
+.album-art-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.vinyl-record {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #0b0b0d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 
+                inset 0 0 0 10px #1a1a1f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease;
+}
+
+.vinyl-record.playing {
+    animation: spin 6s linear infinite;
+}
+
+/* Realistic Vinyl Grooves */
+.vinyl-grooves {
+    position: absolute;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+}
+
+.vinyl-center {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-green-neon);
+    border: 3px solid #1a1a1f;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.vinyl-label-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--color-green-dark) 0%, var(--color-green-neon) 100%);
+    border: 1px solid var(--color-green-neon);
+    color: var(--color-text-main);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 255, 100, 0.25);
+    z-index: 10;
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+
+.category-badge.blues {
+    background: linear-gradient(135deg, hsl(45, 80%, 20%) 0%, var(--color-gold) 100%);
+    border-color: var(--color-gold);
+    box-shadow: 0 5px 15px rgba(255, 180, 0, 0.2);
+}
+
+.category-badge.nacional {
+    background: linear-gradient(135deg, hsl(200, 80%, 20%) 0%, hsl(200, 85%, 50%) 100%);
+    border-color: hsl(200, 85%, 50%);
+    box-shadow: 0 5px 15px rgba(0, 150, 255, 0.2);
+}
+
+/* Now Playing Information */
+.now-playing-info {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.track-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-text-main);
+}
+
+.track-artist {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-text-sub);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Interactive Sound Bar Visualizer */
+.visualizer-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 40px;
+    width: 100%;
+    margin: 5px 0;
+    pointer-events: none;
+}
+
+.visualizer-bar {
+    width: 4px;
+    height: 3px;
+    background-color: var(--color-border);
+    border-radius: 20px;
+    transition: height 0.2s ease, background-color 0.3s ease;
+}
+
+/* Animated State when playing */
+.visualizer-container.playing .visualizer-bar {
+    background-color: var(--color-green-neon);
+    box-shadow: 0 0 8px var(--color-green-neon-glow);
+    animation: bounce-bar 1.2s ease-in-out infinite alternate;
+    animation-delay: calc(var(--i) * 0.08s);
+}
+
+.visualizer-container.playing .visualizer-bar:nth-child(even) {
+    background-color: var(--color-gold);
+    box-shadow: 0 0 8px var(--color-gold-glow);
+}
+
+/* ==========================================================================
+   AUDIO PLAYER CONTROLS
+   ========================================================================== */
+
+.player-controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Progress bar container (Pseudo-Live indicator) */
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+}
+
+.time-label {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    color: var(--color-text-sub);
+    width: 42px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-green-neon) 0%, var(--color-gold) 100%);
+    box-shadow: 0 0 10px var(--color-green-neon-glow);
+    border-radius: 10px;
+    transition: width 0.1s linear;
+}
+
+/* Controls buttons row */
+.control-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    padding: 10px 20px;
+}
+
+/* Volume panel */
+.volume-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 110px;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-text-main);
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    transition: var(--transition-smooth);
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+    background-color: var(--color-green-neon);
+    transform: scale(1.2);
+}
+
+/* Buttons style */
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-sub);
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.icon-btn:hover {
+    color: var(--color-text-main);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Central Play Button Styling */
+.play-btn {
+    background: linear-gradient(135deg, var(--color-green-neon) 0%, var(--color-green-dark) 100%);
+    border: none;
+    color: var(--color-text-main);
+    font-size: 1.3rem;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px var(--color-green-neon-glow),
+                inset 0 2px 4px rgba(255,255,255,0.2);
+    transition: var(--transition-smooth);
+    margin: 0 10px;
+}
+
+.play-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(145, 235, 172, 0.5);
+}
+
+.play-btn:active {
+    transform: scale(0.95);
+}
+
+/* ==========================================================================
+   RIGHT PANEL: PLAYLISTS & PROGRAMMING INFO
+   ========================================================================== */
+
+.programming-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 525px;
+    overflow-y: auto;
+}
+
+.panel-header {
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 10px;
+}
+
+.panel-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.playlist-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-text-sub);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    padding-bottom: 4px;
+}
+
+.badge {
+    background-color: var(--color-border);
+    color: var(--color-text-sub);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+
+/* Songs Lists items */
+.song-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 50px;
+}
+
+.song-list-placeholder {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 15px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--border-radius-sm);
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius-sm);
+    padding: 8px 12px;
+    transition: var(--transition-smooth);
+}
+
+.song-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.song-item-idx {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    width: 15px;
+    text-align: center;
+}
+
+.song-item-details {
+    flex-grow: 1;
+    min-width: 0; /* Enables text truncation */
+}
+
+.song-item-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.song-item-artist {
+    font-size: 0.75rem;
+    color: var(--color-text-sub);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 1px;
+}
+
+.song-item-category {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.song-item-category.rock {
+    background-color: rgba(145, 235, 172, 0.1);
+    color: var(--color-green-neon);
+    border: 1px solid rgba(145, 235, 172, 0.2);
+}
+
+.song-item-category.blues {
+    background-color: hsla(45, 85%, 52%, 0.1);
+    color: var(--color-gold);
+    border: 1px solid hsla(45, 85%, 52%, 0.2);
+}
+
+.song-item-category.nacional {
+    background-color: rgba(0, 150, 255, 0.1);
+    color: hsl(200, 85%, 60%);
+    border: 1px solid rgba(0, 150, 255, 0.2);
+}
+
+/* Suffixing active track */
+.song-item.active {
+    background-color: hsla(145, 80%, 48%, 0.08);
+    border-color: hsla(145, 80%, 48%, 0.2);
+}
+
+.song-item.active .song-item-title {
+    color: var(--color-green-neon);
+}
+
+.song-item.active .song-item-idx {
+    color: var(--color-green-neon);
+}
+
+/* ==========================================================================
+   ABOUT & INFORMATION CARD
+   ========================================================================== */
+
+.about-card {
+    margin-top: 5px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-text h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.about-text p {
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    line-height: 1.5;
+}
+
+.about-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 220px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: var(--border-radius-sm);
+    padding: 10px 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-text-main);
+    transition: var(--transition-smooth);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+.social-link.whatsapp {
+    background-color: hsl(142, 70%, 25%);
+    border: 1px solid hsl(142, 70%, 35%);
+}
+
+.social-link.whatsapp:hover {
+    background-color: hsl(142, 70%, 35%);
+    transform: translateY(-2px);
+}
+
+.social-link.instagram {
+    background: linear-gradient(135deg, hsl(329, 70%, 40%) 0%, hsl(15, 80%, 45%) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-link.instagram:hover {
+    background: linear-gradient(135deg, hsl(329, 70%, 50%) 0%, hsl(15, 80%, 55%) 100%);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   FOOTER COMPONENT
+   ========================================================================== */
+
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--color-border);
+    padding: 15px 5px;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.free-badge {
+    color: var(--color-green-neon);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   ANIMATIONS & EFFECTS KEYS
+   ========================================================================== */
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(36deg); } /* Rotation split into small intervals to sync perfectly */
+}
+
+/* Custom CSS Spin Animation Keyframes */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-live {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce-bar {
+    0% { height: 3px; }
+    100% { height: 32px; }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .radio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .programming-card {
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 650px) {
+    body {
+        padding: 10px 5px;
+    }
+    
+    .app-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .header-brand {
+        flex-direction: column;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .about-links {
+        width: 100%;
+    }
+    
+    .app-footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+}
